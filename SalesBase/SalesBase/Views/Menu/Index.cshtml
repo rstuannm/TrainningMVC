@@ -60,10 +60,10 @@
 
             <div class="row margin10">
                 <div class="col-md-6 text-center">
-                    <input type="button" value="Hóa đơn nhập hàng" class="btnStype" />
+                    <input type="button" value="Hóa đơn nhập hàng" class="btnStype" id="btnBill"/>
                 </div>
                 <div class="col-md-6  text-center">
-                    <input type="button" value="Hóa đơn bán hàng" class="btnStype" />
+                    <input type="button" value="Hóa đơn bán hàng" class="btnStype" id="btnBillIn"/>
                 </div>
             </div>
 
@@ -205,5 +205,13 @@
         });
         // End Search
 
+        $("#btnBill").click(function() {
+            var url = '@Url.Action("Index", "Bill")';
+            location.href = url;
+        });
+
+        $("#btnBillIn").click(function() {
+           
+        });
     });
 </script>

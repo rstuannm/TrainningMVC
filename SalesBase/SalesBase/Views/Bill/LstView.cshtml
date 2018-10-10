@@ -1,0 +1,43 @@
+﻿@model List<Bussiness.DbContext.product>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.id</td>
+        <td>@item.name</td>
+        <td>@item.amount</td>
+        <td>@item.price</td>
+        <td><input type="button" value="Cập nhật" class="update" tag="@item.id" dname="@item.name" damount ="@item.amount" dprice ="@item.price" /></td>
+        <td><input type="button" value="Xóa" class="delete" tag="@item.id" /></td>
+    </tr>
+
+}
+
+<script type="text/javascript">
+    $(".delete").click(function (evt) {
+        evt.stopPropagation();
+        $.ajax({
+            url: '@Url.Action("Delete", "Bill")',
+            type: 'POST',
+            dataType: 'json',
+            data: { id: $(this).attr("tag")},
+            success: function (data) {
+                if (data.err)
+                    $('#lstBody').html(data.view);
+                else
+                    alert(data.msg);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+    });
+
+    $(".update").click(function (evt) {
+        $("#product_id").val($(this).attr("tag"));
+        $("#product_name").val($(this).attr("dname"));
+        $("#product_amount").val($(this).attr("damount"));
+        $("#product_price").val($(this).attr("dprice"));
+    });
+
+</script>

@@ -164,6 +164,7 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
+    <Compile Include="ModelView\BillVM.cs" />
     <Compile Include="ModelView\CatalogVM.cs" />
     <Compile Include="ModelView\CompanyVM.cs" />
     <Compile Include="ModelView\CustomerVM.cs" />
@@ -262,6 +264,8 @@
     <Content Include="Views\SearchCompany\LstView.cshtml" />
     <Content Include="Views\SearchProduct\Index.cshtml" />
     <Content Include="Views\SearchProduct\LstView.cshtml" />
+    <Content Include="Views\Bill\Index.cshtml" />
+    <Content Include="Views\Bill\LstView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

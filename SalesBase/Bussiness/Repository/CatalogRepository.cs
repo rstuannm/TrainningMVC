@@ -90,6 +90,8 @@ namespace Bussiness.Repository
                 else
                 {
                     a.name = model.name;
+                    a.update_user = model.update_user;
+                    a.update_date = model.update_date;
                     _db.SaveChanges();
                     return true;
                 }

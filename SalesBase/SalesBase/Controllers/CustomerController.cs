@@ -137,6 +137,7 @@ namespace SalesBase.Controllers
             try
             {
                 var modelUpdate = model.GetEntity();
+                modelUpdate.update_date = DateTime.Now;
                 var msgValid = ValidateModel(modelUpdate);
 
                 if (string.IsNullOrEmpty(msgValid))

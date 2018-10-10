@@ -68,6 +68,8 @@ namespace Bussiness.Repository
                     a.amount = model.amount;
                     a.price = model.price;
                     a.price_buy = model.price_buy;
+                    a.update_user = model.update_user;
+                    a.update_date = model.update_date;
                     _db.SaveChanges();
                     return true;
                 }
