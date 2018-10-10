@@ -1,0 +1,110 @@
+﻿@model SalesBase.Models.ProductModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Update", "User", FormMethod.Post, new { id = "frmUpdate" }))
+{
+
+
+    <div class="row">
+        <label class="text-danger" id="lblError"> @Model.MsgError</label>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.id)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.id, new { @class = "form-textbox", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+
+    @*row 2*@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.catalog_id)
+            </div>
+            <div class="col-md-8">
+                @Html.DropDownListFor(m => m.catalog_id, Model.lstCbb, "-- Select catalog --", new { @class = "form-combobox" })
+                @*@Html.TextBoxFor(m => m.catalog_id, new { @class = "form-textbox" })*@
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.name)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.name, new { @class = "form-textbox" })
+            </div>
+        </div>
+    </div>
+
+    @*row 3*@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.amount)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.amount, new { @class = "form-textbox" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.price)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.price, new { @class = "form-textbox" })
+            </div>
+        </div>
+    </div>
+
+    @*row 4*@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.price_buy)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.price_buy, new { @class = "form-textbox" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4">
+                <input id="btnUpdate" type="button" class="btn-info" value="Cập nhật" />
+                @*<button id="Update" class="btn-info">Cập nhật</button>*@
+            </div>
+        </div>
+    </div>
+
+}
+
+<script type="text/javascript">
+    $("#btnUpdate").click(function () {
+        $('#lblError').html('');
+        $.ajax({
+            url: '@Url.Action("Update", "Product")',
+            type: 'POST',
+            dataType: 'json',
+            data: $('#frmUpdate').serialize(),
+            success: function (data) {
+                if (data.status) {
+                    var url = '@Url.Action("Index", "Product")';
+                    location.href = url;
+                }
+                else {
+                    $('#lblError').html(data.msg);
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                $('#lblError').html(xhr);
+            }
+        });
+    });
+</script>

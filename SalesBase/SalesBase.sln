@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesBase", "SalesBase\SalesBase.csproj", "{BD271D14-A967-4923-B042-38630309F760}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8F06B8EF-880F-4B20-97AE-91BCE698C432} = {8F06B8EF-880F-4B20-97AE-91BCE698C432}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bussiness", "Bussiness\Bussiness.csproj", "{8F06B8EF-880F-4B20-97AE-91BCE698C432}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD271D14-A967-4923-B042-38630309F760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD271D14-A967-4923-B042-38630309F760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD271D14-A967-4923-B042-38630309F760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD271D14-A967-4923-B042-38630309F760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F06B8EF-880F-4B20-97AE-91BCE698C432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F06B8EF-880F-4B20-97AE-91BCE698C432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F06B8EF-880F-4B20-97AE-91BCE698C432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F06B8EF-880F-4B20-97AE-91BCE698C432}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {303E78BF-9F64-48EE-BECF-387DA70512DA}
+	EndGlobalSection
+EndGlobal

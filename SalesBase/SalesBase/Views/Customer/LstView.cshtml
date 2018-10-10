@@ -1,0 +1,68 @@
+﻿@model List<Bussiness.DbContext.customer>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.user_cd</td>
+        <td>@item.user_name</td>
+        <td>@item.pass_word</td>
+        <td>@item.name</td>
+        <td>@item.mobile</td>
+        <td>@item.email</td>
+        <td>@item.adress</td>
+        <td>@(item.sex.HasValue ? (item.sex.Value ? "Nam" : "Nữ") : "")</td>
+        <td>@item.update_date</td>
+        <td><input type="button" value="Cập nhật" class="update" tag="@item.user_cd" /></td>
+        <td><input type="button" value="Xóa" class="delete" tag="@item.user_cd" /></td>
+    </tr>
+
+}
+
+<script type="text/javascript">
+    $(".delete").click(function (evt) {
+        evt.stopPropagation();
+        $.ajax({
+            url: '@Url.Action("Delete", "Customer")',
+            type: 'POST',
+            dataType: 'json',
+            data: { id: $(this).attr("tag")},
+            success: function (data) {
+                if (data.err)
+                    $('#lstBody').html(data.view);
+                else
+                    alert(data.msg);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+    });
+
+    $(".update").click(function (evt) {
+        evt.stopPropagation();
+        var options = {
+            id: "Update",
+            title: "Cập nhật thông tin khách hàng",
+            width: 1100,
+            height: 530,
+            url: '@Url.Action("UpdateGet", "Customer")',
+            data:{ id: $(this).attr("tag")},
+            draggable: true,
+            resizable: true
+        };
+
+        var pop = popUp.initPopupWindow(options);
+        pop.dialog({
+            close: function (data) {
+                //if ($(this).data("Status") === true) {
+                //    txtCd.value = $(this).data("CD");
+                //    txtName.value = $(this).data("Name");
+                //    $(this).data("Status", false);
+                //    $(this).data("CD", '');
+                //    $(this).data("Name", '');
+                //}
+            }
+        });
+    });
+
+</script>

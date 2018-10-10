@@ -1,0 +1,182 @@
+﻿
+<style type="text/css">
+    .btnStype {
+        width: 200px
+    }
+
+    .margin10 {
+        margin: 10px 0;
+        height: 22px;
+    }
+
+    .gr_border {
+        border: 1px solid black;
+        margin: 1px;
+        padding: 0 0 10px 20px;
+    }
+</style>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-6">
+        <div class="row gr_border">
+
+            <div class="row  glyphicon-search">
+                Quản lý master
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Quản lý nhân viên" class="btnStype" id="btnStaff"/>
+                </div>
+                <div class="col-md-6  text-center">
+                    <input type="button" value="Quản lý khách hàng" class="btnStype" id="btnCustomer"/>
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Quản lý công ty" class="btnStype" id="btnCompany"/>
+                </div>
+                <div class="col-md-6  text-center">
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Quản lý nhóm sản phẩm" class="btnStype" id="btnCatalog"/>
+                </div>
+                <div class="col-md-6  text-center">
+                    <input type="button" value="Quản lý sản phẩm" class="btnStype" id="btnProduct"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="row gr_border">
+            <div class="row  glyphicon-search">
+                Hóa đơn
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Hóa đơn nhập hàng" class="btnStype" />
+                </div>
+                <div class="col-md-6  text-center">
+                    <input type="button" value="Hóa đơn bán hàng" class="btnStype" />
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                </div>
+                <div class="col-md-6  text-center">
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                </div>
+                <div class="col-md-6  text-center">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+        <div class="row gr_border">
+
+            <div class="row  glyphicon-search">
+                Tìm kiếm
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Tìm kiếm nhân viên" class="btnStype" />
+                </div>
+                <div class="col-md-6  text-center">
+                    <input type="button" value="Tìm kiếm khách hàng" class="btnStype" />
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Tìm kiếm công ty" class="btnStype" />
+                </div>
+                <div class="col-md-6  text-center">
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Tìm kiếm sản phẩm" class="btnStype" />
+                </div>
+                <div class="col-md-6  text-center">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="row gr_border">
+            <div class="row glyphicon-search">
+                Thống kê
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                    <input type="button" value="Thống kê nhập hàng" class="btnStype" />
+                </div>
+                <div class="col-md-6  text-center">
+                    <input type="button" value="Thống kê bán hàng" class="btnStype" />
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                </div>
+                <div class="col-md-6  text-center">
+                </div>
+            </div>
+
+            <div class="row margin10">
+                <div class="col-md-6 text-center">
+                </div>
+                <div class="col-md-6  text-center">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnStaff").click(function() {
+            var url = '@Url.Action("Index", "Staff")';
+            location.href = url;
+        });
+
+        $("#btnCustomer").click(function() {
+            var url = '@Url.Action("Index", "Customer")';
+            location.href = url;
+        });
+
+        $("#btnCompany").click(function() {
+            var url = '@Url.Action("Index", "Company")';
+            location.href = url;
+        });
+        
+        $("#btnProduct").click(function() {
+            var url = '@Url.Action("Index", "Product")';
+            location.href = url;
+        });
+        
+    });
+</script>

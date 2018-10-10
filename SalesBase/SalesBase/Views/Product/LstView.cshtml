@@ -1,0 +1,66 @@
+﻿@model List<Bussiness.DbContext.product>
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>@item.id</td>
+    <td>@((ViewBag.lstCbb as List<SelectListItem>).FirstOrDefault(x =>x.Value == item.catalog_id.ToString()).Text)</td>
+    <td>@item.name</td>
+    <td>@item.amount</td>
+    <td>@item.price</td>
+    <td>@item.price_buy</td>
+    <td>@item.update_date</td>
+    <td><input type="button" value="Cập nhật" class="update" tag="@item.id" /></td>
+    <td><input type="button" value="Xóa" class="delete" tag="@item.id" /></td>
+</tr>
+
+}
+
+<script type="text/javascript">
+    $(".delete").click(function (evt) {
+        evt.stopPropagation();
+        $.ajax({
+            url: '@Url.Action("Delete", "Product")',
+            type: 'POST',
+            dataType: 'json',
+            data: { id: $(this).attr("tag")},
+            success: function (data) {
+                if (data.err)
+                    $('#lstBody').html(data.view);
+                else
+                    alert(data.msg);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+    });
+
+    $(".update").click(function (evt) {
+        evt.stopPropagation();
+        var options = {
+            id: "Update",
+            title: "Cập nhật thông tin sản phẩm",
+            width: 1100,
+            height: 530,
+            url: '@Url.Action("UpdateGet", "Product")',
+            data:{ id: $(this).attr("tag")},
+            draggable: true,
+            resizable: true
+        };
+
+        var pop = popUp.initPopupWindow(options);
+        pop.dialog({
+            close: function (data) {
+                //if ($(this).data("Status") === true) {
+                //    txtCd.value = $(this).data("CD");
+                //    txtName.value = $(this).data("Name");
+                //    $(this).data("Status", false);
+                //    $(this).data("CD", '');
+                //    $(this).data("Name", '');
+                //}
+            }
+        });
+    });
+
+</script>

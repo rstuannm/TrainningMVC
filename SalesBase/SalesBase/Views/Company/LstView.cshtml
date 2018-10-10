@@ -1,0 +1,67 @@
+﻿@model List<Bussiness.DbContext.company>
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>@item.company_cd</td>
+    <td>@item.company_name</td>
+    <td>@item.company_short_name</td>
+    <td>@item.tel</td>
+    <td>@item.address</td>
+    <td>@item.fax</td>
+    <td>@item.phone</td>
+    <td>@item.update_date</td>
+    <td><input type="button" value="Cập nhật" class="update" tag="@item.company_cd" /></td>
+    <td><input type="button" value="Xóa" class="delete" tag="@item.company_cd" /></td>
+</tr>
+
+}
+
+<script type="text/javascript">
+    $(".delete").click(function (evt) {
+        evt.stopPropagation();
+        $.ajax({
+            url: '@Url.Action("Delete", "Company")',
+            type: 'POST',
+            dataType: 'json',
+            data: { id: $(this).attr("tag")},
+            success: function (data) {
+                if (data.err)
+                    $('#lstBody').html(data.view);
+                else
+                    alert(data.msg);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+    });
+
+    $(".update").click(function (evt) {
+        evt.stopPropagation();
+        var options = {
+            id: "Update",
+            title: "Cập nhật thông tin công ty",
+            width: 1100,
+            height: 530,
+            url: '@Url.Action("UpdateGet", "Company")',
+            data:{ id: $(this).attr("tag")},
+            draggable: true,
+            resizable: true
+        };
+
+        var pop = popUp.initPopupWindow(options);
+        pop.dialog({
+            close: function (data) {
+                //if ($(this).data("Status") === true) {
+                //    txtCd.value = $(this).data("CD");
+                //    txtName.value = $(this).data("Name");
+                //    $(this).data("Status", false);
+                //    $(this).data("CD", '');
+                //    $(this).data("Name", '');
+                //}
+            }
+        });
+    });
+
+</script>

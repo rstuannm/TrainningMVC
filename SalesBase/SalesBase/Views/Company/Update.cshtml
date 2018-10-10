@@ -1,0 +1,124 @@
+﻿@model SalesBase.Models.CompanyModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Update", "User", FormMethod.Post, new { id = "frmUpdate" }))
+{
+
+
+    <div class="row">
+        <label class="text-danger" id="lblError"> @Model.MsgError</label>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.company_cd)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.company_cd, new { @class = "form-textbox", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+
+    @*row 2*@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.company_name)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.company_name, new { @class = "form-textbox" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.company_short_name)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.company_short_name, new { @class = "form-textbox" })
+            </div>
+        </div>
+    </div>
+
+    @*row 3*@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.tel)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.tel, new { @class = "form-textbox" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.address)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.address, new { @class = "form-textbox" })
+            </div>
+        </div>
+    </div>
+
+    @*row 4*@
+    <div class="row">
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.fax)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.fax, new { @class = "form-textbox" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.phone)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.phone, new { @class = "form-textbox" })
+            </div>
+        </div>
+    </div>
+
+    @*row 5*@
+    <div class="row">
+        <div class="col-md-6">
+            
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4">
+                <input id="btnUpdate" type="button" class="btn-info" value="Cập nhật" />
+                @*<button id="Update" class="btn-info">Cập nhật</button>*@
+            </div>
+        </div>
+    </div>
+
+}
+
+<script type="text/javascript">
+    $("#btnUpdate").click(function () {
+        $('#lblError').html('');
+        $.ajax({
+            url: '@Url.Action("Update", "Company")',
+            type: 'POST',
+            dataType: 'json',
+            data: $('#frmUpdate').serialize(),
+            success: function (data) {
+                if (data.status) {
+                    var url = '@Url.Action("Index", "Company")';
+                    location.href = url;
+                }
+                else {
+                    $('#lblError').html(data.msg);
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                $('#lblError').html(xhr);
+            }
+        });
+    });
+</script>
