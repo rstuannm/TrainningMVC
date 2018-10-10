@@ -55,7 +55,7 @@ namespace SalesBase.Controllers
         {
             int totalRecord = 0;
             var model = _userRepository.GetLst(modelSearch.search.GetEntity(), page, NumberRecord, out totalRecord);
-
+            ViewBag.lstCbb = LoadListCatalog();
             return Json(new
             {
                 view = RenderRazorViewToString(ControllerContext, "LstView", model)
