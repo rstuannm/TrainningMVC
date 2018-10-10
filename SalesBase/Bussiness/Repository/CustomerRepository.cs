@@ -87,7 +87,7 @@ namespace Bussiness.Repository
                          && (string.IsNullOrEmpty(model.pass_word) || u.pass_word.Equals(model.pass_word))
                          && (string.IsNullOrEmpty(model.mobile) || u.mobile.Equals(model.mobile))
                          && (string.IsNullOrEmpty(model.adress) || u.adress.Equals(model.adress))
-                         && (model.sex == null || u.sex.Equals(model.sex))
+                         && (model.sex == null || u.sex == model.sex)
                          && u.del_flg.Equals(false)
                          select u);
             totalRecord = a.Count();

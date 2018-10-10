@@ -1,0 +1,16 @@
+﻿@model List<Bussiness.DbContext.company>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.company_cd</td>
+        <td>@item.company_name</td>
+        <td>@item.company_short_name</td>
+        <td>@item.tel</td>
+        <td>@item.address</td>
+        <td>@item.fax</td>
+        <td>@item.phone</td>
+        <td>@item.update_date</td>
+    </tr>
+
+}

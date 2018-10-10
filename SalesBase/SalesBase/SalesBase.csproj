@@ -164,18 +164,25 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SearchCompanyController.cs" />
+    <Compile Include="Controllers\SearchCustomerController.cs" />
+    <Compile Include="Controllers\SearchProductController.cs" />
+    <Compile Include="Controllers\SearchStaffController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CatalogModel.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
+    <Compile Include="ModelView\CatalogVM.cs" />
     <Compile Include="ModelView\CompanyVM.cs" />
     <Compile Include="ModelView\CustomerVM.cs" />
     <Compile Include="ModelView\ProductVM.cs" />
@@ -244,6 +251,17 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\LstView.cshtml" />
     <Content Include="Views\Product\Update.cshtml" />
+    <Content Include="Views\Catalog\Index.cshtml" />
+    <Content Include="Views\Catalog\LstView.cshtml" />
+    <Content Include="Views\Catalog\Update.cshtml" />
+    <Content Include="Views\SearchStaff\Index.cshtml" />
+    <Content Include="Views\SearchStaff\LstView.cshtml" />
+    <Content Include="Views\SearchCustomer\Index.cshtml" />
+    <Content Include="Views\SearchCustomer\LstView.cshtml" />
+    <Content Include="Views\SearchCompany\Index.cshtml" />
+    <Content Include="Views\SearchCompany\LstView.cshtml" />
+    <Content Include="Views\SearchProduct\Index.cshtml" />
+    <Content Include="Views\SearchProduct\LstView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

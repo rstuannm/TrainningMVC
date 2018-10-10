@@ -28,7 +28,7 @@ namespace Bussiness.Repository
             }
         }
 
-        public void Delete(int catalogId)
+        public bool Delete(int catalogId)
         {
             var a = (from u in _db.catalogs
                      where u.id.Equals(catalogId)
@@ -38,6 +38,11 @@ namespace Bussiness.Repository
             {
                 a.del_flg = true;
                 _db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -57,14 +62,16 @@ namespace Bussiness.Repository
 
         }
 
-        public List<catalog> GetLst(catalog model)
+        public List<catalog> GetLst(catalog model, int? page, int numberRecord, out int totalRecord)
         {
             var a = (from u in _db.catalogs
                      where (model.id == 0 || u.id == model.id)
                      && (string.IsNullOrEmpty(model.name) || u.name.Contains(model.name))
                      && u.del_flg == false
-                     select u).ToList();
-            return a;
+                     select u);
+            totalRecord = a.Count();
+
+            return a.ToList().Skip((page.GetValueOrDefault() - 1) * numberRecord).Take(numberRecord).ToList();
 
         }
 

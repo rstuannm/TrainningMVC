@@ -25,6 +25,7 @@ namespace Bussiness.Repository
         {
             var a = (from u in _db.products
                      where (model.id == 0 || u.id.Equals(model.id))
+                     && ((model.catalog_id == null) || u.catalog_id ==model.catalog_id)
                      && (string.IsNullOrEmpty(model.name) || u.name.Contains(model.name))
                      && ((model.amount == null) || u.amount.Equals(model.amount))
                      && ((model.price == null) || u.price.Equals(model.price))

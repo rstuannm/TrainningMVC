@@ -1,0 +1,16 @@
+﻿@model List<Bussiness.DbContext.product>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.id</td>
+        <td>@((ViewBag.lstCbb as List<SelectListItem>).FirstOrDefault(x => x.Value == item.catalog_id.ToString()).Text)</td>
+        <td>@item.name</td>
+        <td>@item.amount</td>
+        <td>@item.price</td>
+        <td>@item.price_buy</td>
+        <td>@item.update_date</td>
+    </tr>
+
+}
+

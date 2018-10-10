@@ -11,8 +11,8 @@ namespace Bussiness.IRepository
     public interface ICatalogRepository
     {
         catalog GetCatalog(catalog model);
-        List<catalog> GetLst(catalog model);
-        void Delete(int catalogId);
+        List<catalog> GetLst(catalog model, int? page, int numberRecord, out int totalRecord);
+        bool Delete(int catalogId);
         bool Add(catalog model);
         bool Update(catalog model);
     }

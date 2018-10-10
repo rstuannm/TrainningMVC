@@ -76,7 +76,7 @@ namespace Bussiness.Repository
             //throw new NotImplementedException();
             var a = (from u in _db.companies
                      where (string.IsNullOrEmpty(model.company_cd) || u.company_cd.Equals(model.company_cd))
-                         && (string.IsNullOrEmpty(model.company_name) || u.company_name.Equals(model.company_name))
+                         && (string.IsNullOrEmpty(model.company_name) || u.company_name.Contains(model.company_name))
                          && (string.IsNullOrEmpty(model.company_short_name) || u.company_name.Equals(model.company_name))
                          && (string.IsNullOrEmpty(model.address) || u.address.Equals(model.address))
                          && (string.IsNullOrEmpty(model.tel) || u.tel.Equals(model.tel))

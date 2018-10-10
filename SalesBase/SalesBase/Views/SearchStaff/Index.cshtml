@@ -1,4 +1,4 @@
-﻿@model SalesBase.ModelView.CompanyVM
+﻿@model SalesBase.ModelView.StaffVM
 
 @{
     ViewBag.Title = "Index";
@@ -7,16 +7,16 @@
 @using (Html.BeginForm("Index", "User", FormMethod.Post, new { id = "frm" }))
 {
     <div class="row">
-        <h3>Quản lý thông tin công ty</h3>
+        <h3>Tìm kiếm thông tin nhân viên</h3>
     </div>
 
     <div class="row">
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.company_cd)
+                @Html.DisplayNameFor(m => m.search.user_cd)
             </div>
             <div class="col-md-3">
-                @Html.TextBoxFor(m => m.search.company_cd, new { @class = "form-textbox" })
+                @Html.TextBoxFor(m => m.search.user_cd, new { @class = "form-textbox" })
             </div>
         </div>
     </div>
@@ -25,18 +25,18 @@
     <div class="row">
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.company_name)
+                @Html.DisplayNameFor(m => m.search.user_name)
             </div>
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.company_name, new { @class = "form-textbox" })
+                @Html.TextBoxFor(m => m.search.user_name, new { @class = "form-textbox" })
             </div>
         </div>
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.company_short_name)
+                @Html.DisplayNameFor(m => m.search.pass_word)
             </div>
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.company_short_name, new { @class = "form-textbox" })
+                @Html.TextBoxFor(m => m.search.pass_word, new { @class = "form-textbox" })
             </div>
         </div>
     </div>
@@ -45,18 +45,18 @@
     <div class="row">
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.tel)
+                @Html.DisplayNameFor(m => m.search.name)
             </div>
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.tel, new { @class = "form-textbox" })
+                @Html.TextBoxFor(m => m.search.name, new { @class = "form-textbox" })
             </div>
         </div>
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.address)
+                @Html.DisplayNameFor(m => m.search.mobile)
             </div>
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.address, new { @class = "form-textbox" })
+                @Html.TextBoxFor(m => m.search.mobile, new { @class = "form-textbox" })
             </div>
         </div>
     </div>
@@ -65,31 +65,39 @@
     <div class="row">
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.fax)
+                @Html.DisplayNameFor(m => m.search.email)
             </div>
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.fax, new { @class = "form-textbox" })
+                @Html.TextBoxFor(m => m.search.email, new { @class = "form-textbox" })
             </div>
         </div>
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.phone)
+                @Html.DisplayNameFor(m => m.search.adress)
             </div>
             <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.phone, new { @class = "form-textbox" })
+                @Html.TextBoxFor(m => m.search.adress, new { @class = "form-textbox" })
             </div>
         </div>
     </div>
 
-
     @*row 5*@
     <div class="row">
         <div class="col-md-6">
-           
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.search.sex)
+            </div>
+            <div class="col-md-8">
+                @Html.RadioButtonFor(m => m.search.sex, "True")
+                <label for="True">Nam</label>
+                @Html.RadioButtonFor(m => m.search.sex, "False")
+                <label for="False">Nữ</label>
+                @*@Html.TextBoxFor(m => m.search.sex, new { @class = "form-textbox" })*@
+            </div>
         </div>
         <div class="col-md-6">
-            <div class="col-md-4">
-                <input type="button" id="btnAdd" value="Thêm" class="btn-info" />
+            <div class="col-md-6">
+                <input type="button" id="btnSearch" value="Tìm kiếm" class="btn-info" />
                 <input type="button" id="btnClear" value="Clear" class="btn-info" />
                 <input type="button" id="btnBack" value="Back" class="btn-info" />
             </div>
@@ -103,19 +111,18 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên công ty</th>
-                    <th>Tên rút gọn</th>
-                    <th>Tel</th>
-                    <th>Địa chỉ</th>
-                    <th>Fax</th>
+                    <th>User</th>
+                    <th>Mật khẩu</th>
+                    <th>Tên</th>
                     <th>Điện thoại</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Giới tính</th>
                     <th>Ngày cập nhật</th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody id="lstBody">
-                @Html.Partial("LstView", Model.Lst)
+                @Html.Partial("LstView", Model.LstStaff)
             </tbody>
         </table>
     </div>
@@ -127,23 +134,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $("#btnAdd").click(function() {
-            $.ajax({
-                url: '@Url.Action("Add", "Company")',
+        $("#btnSearch").click(function() {
+                $.ajax({
+                    url: '@Url.Action("GetLstUser", "SearchStaff")',
                 type: 'POST',
                 dataType: 'json',
                 data: $('#frm').serialize(),
                 success: function (data) {
-                    if (data.status) {
-                        var url = '@Url.Action("Index", "Company")';
-                        location.href = url;
-                    }
-                    else {
-                        alert(data.msg);
-                    }
+                    $('#lstBody').html(data.view);
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    alert(xhr);
+                    alert(textStatus);
                 }
             });
         });
@@ -155,10 +156,10 @@
 
         $("#btnClear").click(function () {
             $("input[type=text]").val("");
+            $('input[id=search_sex]').attr('checked', false);
         });
 
-
-        $('#pagination-demo').twbsPagination({
+         $('#pagination-demo').twbsPagination({
             totalPages: @Model.ToTalPage,
             startPage: @Model.PageNumber,
             visiblePages: 5,
@@ -169,7 +170,7 @@
                     'page': page
                 };
                 $.ajax({
-                    url: '@Url.Action("GetLstUser", "Company")',
+                    url: '@Url.Action("GetLstUser", "SearchStaff")',
                     type: 'POST',
                     dataType: 'json',
                     data: $('#frm').serialize() + '&' + $.param(pr),
@@ -182,7 +183,6 @@
                 });
             }
         });
-
 
     });
 

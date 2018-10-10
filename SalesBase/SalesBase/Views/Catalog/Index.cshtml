@@ -1,4 +1,4 @@
-﻿@model SalesBase.ModelView.CompanyVM
+﻿@model SalesBase.ModelView.CatalogVM
 
 @{
     ViewBag.Title = "Index";
@@ -7,16 +7,25 @@
 @using (Html.BeginForm("Index", "User", FormMethod.Post, new { id = "frm" }))
 {
     <div class="row">
-        <h3>Quản lý thông tin công ty</h3>
+        <h3>Quản lý thông tin loại sản phẩm</h3>
     </div>
 
+    @*row 1*@
     <div class="row">
         <div class="col-md-6">
             <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.company_cd)
+                @Html.DisplayNameFor(m => m.search.id)
             </div>
-            <div class="col-md-3">
-                @Html.TextBoxFor(m => m.search.company_cd, new { @class = "form-textbox" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.search.id, new { @class = "form-textbox", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-4 form_title">
+                @Html.DisplayNameFor(m => m.search.name)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.search.name, new { @class = "form-textbox" })
             </div>
         </div>
     </div>
@@ -24,68 +33,6 @@
     @*row 2*@
     <div class="row">
         <div class="col-md-6">
-            <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.company_name)
-            </div>
-            <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.company_name, new { @class = "form-textbox" })
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.company_short_name)
-            </div>
-            <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.company_short_name, new { @class = "form-textbox" })
-            </div>
-        </div>
-    </div>
-
-    @*row 3*@
-    <div class="row">
-        <div class="col-md-6">
-            <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.tel)
-            </div>
-            <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.tel, new { @class = "form-textbox" })
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.address)
-            </div>
-            <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.address, new { @class = "form-textbox" })
-            </div>
-        </div>
-    </div>
-
-    @*row 4*@
-    <div class="row">
-        <div class="col-md-6">
-            <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.fax)
-            </div>
-            <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.fax, new { @class = "form-textbox" })
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="col-md-4 form_title">
-                @Html.DisplayNameFor(m => m.search.phone)
-            </div>
-            <div class="col-md-8">
-                @Html.TextBoxFor(m => m.search.phone, new { @class = "form-textbox" })
-            </div>
-        </div>
-    </div>
-
-
-    @*row 5*@
-    <div class="row">
-        <div class="col-md-6">
-           
         </div>
         <div class="col-md-6">
             <div class="col-md-4">
@@ -102,13 +49,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Tên công ty</th>
-                    <th>Tên rút gọn</th>
-                    <th>Tel</th>
-                    <th>Địa chỉ</th>
-                    <th>Fax</th>
-                    <th>Điện thoại</th>
+                    <th>Mã loại sản phẩm</th>
+                    <th>Tên loại sản phẩm</th>
                     <th>Ngày cập nhật</th>
                     <th></th>
                     <th></th>
@@ -126,16 +68,16 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-
+        $("input[type=text]").val("");
         $("#btnAdd").click(function() {
             $.ajax({
-                url: '@Url.Action("Add", "Company")',
+                url: '@Url.Action("Add", "Catalog")',
                 type: 'POST',
                 dataType: 'json',
                 data: $('#frm').serialize(),
                 success: function (data) {
                     if (data.status) {
-                        var url = '@Url.Action("Index", "Company")';
+                        var url = '@Url.Action("Index", "Catalog")';
                         location.href = url;
                     }
                     else {
@@ -169,7 +111,7 @@
                     'page': page
                 };
                 $.ajax({
-                    url: '@Url.Action("GetLstUser", "Company")',
+                    url: '@Url.Action("GetLstUser", "Catalog")',
                     type: 'POST',
                     dataType: 'json',
                     data: $('#frm').serialize() + '&' + $.param(pr),

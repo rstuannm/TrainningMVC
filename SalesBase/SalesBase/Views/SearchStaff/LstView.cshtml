@@ -1,0 +1,17 @@
+﻿@model List<Bussiness.DbContext.staff>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.user_cd</td>
+        <td>@item.user_name</td>
+        <td>@item.pass_word</td>
+        <td>@item.name</td>
+        <td>@item.mobile</td>
+        <td>@item.email</td>
+        <td>@item.adress</td>
+        <td>@(item.sex.HasValue ? (item.sex.Value ? "Nam" : "Nữ") : "")</td>
+        <td>@item.update_date</td>
+    </tr>
+
+}

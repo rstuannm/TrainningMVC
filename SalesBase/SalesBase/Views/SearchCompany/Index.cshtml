@@ -7,7 +7,7 @@
 @using (Html.BeginForm("Index", "User", FormMethod.Post, new { id = "frm" }))
 {
     <div class="row">
-        <h3>Quản lý thông tin công ty</h3>
+        <h3>Tìm kiếm thông tin công ty</h3>
     </div>
 
     <div class="row">
@@ -85,11 +85,11 @@
     @*row 5*@
     <div class="row">
         <div class="col-md-6">
-           
+
         </div>
         <div class="col-md-6">
-            <div class="col-md-4">
-                <input type="button" id="btnAdd" value="Thêm" class="btn-info" />
+            <div class="col-md-6">
+                <input type="button" id="btnSearch" value="Tìm kiếm" class="btn-info" />
                 <input type="button" id="btnClear" value="Clear" class="btn-info" />
                 <input type="button" id="btnBack" value="Back" class="btn-info" />
             </div>
@@ -110,8 +110,6 @@
                     <th>Fax</th>
                     <th>Điện thoại</th>
                     <th>Ngày cập nhật</th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody id="lstBody">
@@ -127,23 +125,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $("#btnAdd").click(function() {
-            $.ajax({
-                url: '@Url.Action("Add", "Company")',
+        $("#btnSearch").click(function() {
+                $.ajax({
+                    url: '@Url.Action("GetLstUser", "SearchCompany")',
                 type: 'POST',
                 dataType: 'json',
                 data: $('#frm').serialize(),
                 success: function (data) {
-                    if (data.status) {
-                        var url = '@Url.Action("Index", "Company")';
-                        location.href = url;
-                    }
-                    else {
-                        alert(data.msg);
-                    }
+                    $('#lstBody').html(data.view);
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    alert(xhr);
+                    alert(textStatus);
                 }
             });
         });
@@ -155,10 +147,10 @@
 
         $("#btnClear").click(function () {
             $("input[type=text]").val("");
+            $('input[id=search_sex]').attr('checked', false);
         });
 
-
-        $('#pagination-demo').twbsPagination({
+         $('#pagination-demo').twbsPagination({
             totalPages: @Model.ToTalPage,
             startPage: @Model.PageNumber,
             visiblePages: 5,
@@ -169,7 +161,7 @@
                     'page': page
                 };
                 $.ajax({
-                    url: '@Url.Action("GetLstUser", "Company")',
+                    url: '@Url.Action("GetLstUser", "SearchCompany")',
                     type: 'POST',
                     dataType: 'json',
                     data: $('#frm').serialize() + '&' + $.param(pr),
@@ -182,7 +174,6 @@
                 });
             }
         });
-
 
     });
 

@@ -97,16 +97,16 @@
 
             <div class="row margin10">
                 <div class="col-md-6 text-center">
-                    <input type="button" value="Tìm kiếm nhân viên" class="btnStype" />
+                    <input type="button" value="Tìm kiếm nhân viên" class="btnStype" id="btnSearchStaff"/>
                 </div>
                 <div class="col-md-6  text-center">
-                    <input type="button" value="Tìm kiếm khách hàng" class="btnStype" />
+                    <input type="button" value="Tìm kiếm khách hàng" class="btnStype" id="btnSearchCustomer"/>
                 </div>
             </div>
 
             <div class="row margin10">
                 <div class="col-md-6 text-center">
-                    <input type="button" value="Tìm kiếm công ty" class="btnStype" />
+                    <input type="button" value="Tìm kiếm công ty" class="btnStype" id="btnSearchCompany"/>
                 </div>
                 <div class="col-md-6  text-center">
                 </div>
@@ -114,7 +114,7 @@
 
             <div class="row margin10">
                 <div class="col-md-6 text-center">
-                    <input type="button" value="Tìm kiếm sản phẩm" class="btnStype" />
+                    <input type="button" value="Tìm kiếm sản phẩm" class="btnStype" id="btnSearchProduct"/>
                 </div>
                 <div class="col-md-6  text-center">
 
@@ -173,10 +173,37 @@
             location.href = url;
         });
         
+        $("#btnCatalog").click(function() {
+            var url = '@Url.Action("Index", "Catalog")';
+            location.href = url;
+        });
+
         $("#btnProduct").click(function() {
             var url = '@Url.Action("Index", "Product")';
             location.href = url;
         });
-        
+
+        // Start Search
+        $("#btnSearchStaff").click(function() {
+            var url = '@Url.Action("Index", "SearchStaff")';
+            location.href = url;
+        });
+
+        $("#btnSearchCustomer").click(function() {
+            var url = '@Url.Action("Index", "SearchCustomer")';
+            location.href = url;
+        });
+
+        $("#btnSearchCompany").click(function() {
+            var url = '@Url.Action("Index", "SearchCompany")';
+            location.href = url;
+        });
+
+        $("#btnSearchProduct").click(function() {
+            var url = '@Url.Action("Index", "SearchProduct")';
+            location.href = url;
+        });
+        // End Search
+
     });
 </script>
