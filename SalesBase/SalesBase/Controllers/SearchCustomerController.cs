@@ -15,7 +15,7 @@ namespace SalesBase.Controllers
     public class SearchCustomerController : BaseController
     {
         private readonly ICustomerRepository _userRepository = new CustomerRespository();
-        private const int NumberRecord = 5;
+        private const int NumberRecord = int.MaxValue;
 
         // GET: SearchCustomer
         public ActionResult Index()

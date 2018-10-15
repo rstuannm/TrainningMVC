@@ -15,7 +15,7 @@ namespace SalesBase.Controllers
     public class SearchStaffController : BaseController
     {
         private readonly IStaffRepository _userRepository = new StaffRepository();
-        private const int NumberRecord = 5;
+        private const int NumberRecord = int.MaxValue;
 
         // GET: SearchStaff
         public ActionResult Index()

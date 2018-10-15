@@ -16,7 +16,7 @@ namespace SalesBase.Controllers
     {
         private readonly IProductsRepository _userRepository = new ProductsRepository();
         private readonly ICatalogRepository _catalogRepository = new CatalogRepository();
-        private const int NumberRecord = 5;
+        private const int NumberRecord = int.MaxValue;
         // GET: SearchProduct
         public ActionResult Index()
         {

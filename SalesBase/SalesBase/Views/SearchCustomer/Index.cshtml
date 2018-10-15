@@ -127,9 +127,6 @@
     </div>
 </div>
 
-<ul id="pagination-demo" class="pagination-sm"></ul>
-
-
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -157,32 +154,6 @@
             $("input[type=text]").val("");
             $('input[id=search_sex]').attr('checked', false);
         });
-
-         $('#pagination-demo').twbsPagination({
-            totalPages: @Model.ToTalPage,
-            startPage: @Model.PageNumber,
-            visiblePages: 5,
-            next: 'Next',
-            prev: 'Prev',
-            onPageClick: function (event, page) {
-                var pr = {
-                    'page': page
-                };
-                $.ajax({
-                    url: '@Url.Action("GetLstUser", "SearchCustomer")',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: $('#frm').serialize() + '&' + $.param(pr),
-                    success: function (data) {
-                        $('#lstBody').html(data.view);
-                    },
-                    error: function (xhr, textStatus, errorThrown) {
-                        alert(textStatus);
-                    }
-                });
-            }
-        });
-
     });
 
     //$(document).ready(function () {
